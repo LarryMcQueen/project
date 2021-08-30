@@ -1,0 +1,68 @@
+{% extends 'header.html' %}
+
+{% block body %}
+
+<style type="text/css">
+  .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+</style>
+
+<form class="form-signin" method="post">{% csrf_token %}
+  <h1 class="h3 mb-3 fw-normal">Login</h1>
+
+  <div class="form-floating">
+    <input type="" name="matric_number" class="form-control" id="floatingInput" placeholder="Mat No">
+    <label for="floatingInput">Matric Number</label>
+  </div>
+  <div class="form-floating">
+    <input type="" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+    <label for="floatingPassword">Password</label>
+  </div>
+
+  {% for field in login_form  %}
+    <p>
+      {% for error in field.errors  %}
+      <p style="color:red;">{{error}}</p>
+      {% endfor %}
+    </p>
+    {% endfor %}
+    {% if login_form.non_field_errors  %}
+      <div style="color:red;">
+          <p>{{login_form.non_field_errord}}</p>
+      </div>                   
+    {% endif %}
+      
+    <button class="w-100 btn btn-lg btn-primary" type="submit" class="m-auto">Log in</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+</form>
+  
+
+        
+
+{% endblock body %}

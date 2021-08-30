@@ -1,0 +1,16 @@
+{% extends 'header.html' %}
+
+{% block body %}
+
+<h2>Edit Profile</h2>
+<form method="post">{% csrf_token %}
+    {{form}}
+    
+    <button type="submit">Save Changes</button>
+
+</form>
+        
+
+{% endblock body %}
+        
+
